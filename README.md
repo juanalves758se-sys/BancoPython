@@ -5,7 +5,7 @@ Esse aqui é um projeto simples de um sistema bancário feito em Python puro e u
 
 ---
 
-## O que tem aqui
+## O que tem aqui?
 
 - Cadastro de cliente  
 - Criação de conta bancária  
@@ -23,3 +23,5 @@ também sendo possível manipular esse objeto cliente de todas as formas possív
 ```bash
 python main.py
 ```
+
+OBS: Você precisa estar utilizando o Python pelo menos na versão 3.x

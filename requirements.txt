@@ -1,1 +1,1 @@
-# Este projeto utiliza apenas a biblioteca padrão do Python. Por isso, não há nada aqui no requirements :)
+# Este projeto utiliza apenas a biblioteca padrão do Python. Por isso, não há nada aqui em requirements :)
