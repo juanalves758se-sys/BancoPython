@@ -8,6 +8,7 @@ class Banco:
 
     @classmethod
     def listar_clientes(cls) -> str | dict:
+        """Retorna um dicionário com todos os clientes cadastrados no banco."""
         if len(cls.contas) == 0:
             raise ValueError('Nenhum cliente cadastrado no banco.')
         else:
@@ -15,6 +16,7 @@ class Banco:
 
     @staticmethod
     def adicionar_cliente(cliente: "Cliente") -> str:
+        """Adiciona um cliente ao banco."""
         if not isinstance(cliente, Cliente):
             raise TypeError('Esse cliente não existe!')
         Banco.contas[cliente.identificador] = cliente
@@ -22,6 +24,7 @@ class Banco:
 
     @staticmethod
     def saque(cliente: "Cliente", valor: float | int) -> str:
+        """Realiza um saque do saldo do cliente."""
         if not isinstance(cliente, Cliente):
             raise TypeError('Esse cliente não existe!')
         if not isinstance(valor, (float, int)):
@@ -34,6 +37,7 @@ class Banco:
 
     @staticmethod
     def deposito(cliente: "Cliente", deposito: float | int) -> str:
+        """Deposita um valor no saldo do cliente."""
         if not isinstance(cliente, Cliente):
             raise TypeError('Esse cliente não existe!')
         if not isinstance(deposito, (float, int)):
@@ -48,6 +52,7 @@ class Banco:
 
     @staticmethod
     def transferencia(conta1: "Cliente", conta2: "Cliente", valor: float | int) -> str:
+        """Transfere um valor do saldo de um cliente para outro cliente."""
         if not isinstance(conta1, Cliente):
             raise TypeError('Esses clientes não existem!')
         if not isinstance(conta2, Cliente):
@@ -68,6 +73,7 @@ class Banco:
 
     @classmethod
     def consultar(cls, identificador: int) -> tuple:
+        """Consulta um cliente específico no banco com base pela chave."""
         if not isinstance(identificador, int):
             raise TypeError('Identificador precisa ser um número inteiro.')
         if identificador not in cls.contas.keys():
@@ -77,6 +83,7 @@ class Banco:
 
     @classmethod
     def excluir_cliente(cls, identificador: int) -> str:
+        """Exclui um cliente do banco com base na chave."""
         if not isinstance(identificador, int):
             raise TypeError('Identificador precisa ser um número inteiro.')
         if identificador not in cls.contas.keys():
@@ -88,6 +95,8 @@ class Banco:
 
     @classmethod
     def filtrar_clientes(cls, valor: int | float) -> dict | str:
+        """Filtra um ou mais clientes no banco com base pelo valor.
+        Ele retorna os clientes com saldo maior que o valor informado"""
         if not isinstance(valor, (int, float)):
             raise TypeError('O valor precisa ser numérico')
         if valor > 1000000000:
@@ -103,6 +112,7 @@ class Banco:
 
     @classmethod
     def atualizar_clientes(cls, identificador: int, nome: str, idade: int) -> str:
+        """Atualiza um cliente específico informado pela base. Atualiza nome e idade."""
         if not isinstance(identificador, int):
             raise TypeError('Identificador precisa ser do tipo inteiro.')
         if not isinstance(nome, str):
@@ -124,6 +134,7 @@ class Banco:
 
     @classmethod
     def salvar_clientes(cls) -> None:
+        """Essa função é chamada automaticamente ao sair do sistema. Ela salva os clientes em um arquivo CSV."""
         with open('clientes_do_banco.csv', 'a', encoding='utf-8', newline='') as arquivo:
             escritor = csv.writer(arquivo)
             escritor.writerow(['Nome', 'Idade', 'Saldo'])
@@ -132,6 +143,7 @@ class Banco:
 
     @staticmethod
     def sair_sistema():
+        """Sai do programa e chama a função salvar_clientes."""
         if len(Banco.contas) == 0:
             raise ValueError('Impossível sair caso não tenha nenhum cliente '
                              'no banco (volte para sessão anterior para sair)')

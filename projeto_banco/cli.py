@@ -3,6 +3,7 @@ from projeto_banco.services.banco import Banco, Cliente
 id_clientes = {}
 
 def interacao():
+    """Interação do usuário com o sistema, sendo possível criar cliente e acessar ao banco."""
     while True:
         print('\n##ARÉA CLIENTE##\n')
         print('1 - Criar cliente.')
@@ -38,6 +39,7 @@ def interacao():
 
 
 def cliente():
+    """Criar um cliente informando o nome, idade e saldo."""
     while True:
         try:
             nome = input('Digite o nome do cliente ou "sair" para voltar para a sessão anterior: ').title()
@@ -53,6 +55,7 @@ def cliente():
 
 
 def listar_clientes():
+    """Lista todos os clientes já criados."""
     if len(id_clientes) == 0:
         print('Nenhum cliente foi registrado.')
         return
@@ -62,6 +65,7 @@ def listar_clientes():
 
 
 def excluir_cliente():
+    """Exclui um cliente pela chave informada."""
     if len(id_clientes) == 0:
         print('Nenhum cliente foi registrado.')
     else:
@@ -80,6 +84,7 @@ def excluir_cliente():
 
 
 def banco():
+    """Interação do usuário com o Banco."""
     print('\n##BANCO##\n')
     print('1 - Listar clientes cadastrados no banco.')
     print('2 - Adicionar cliente.')
@@ -122,6 +127,7 @@ def banco():
 
 
 def adicionar_banco():
+    """Fluxo interativo que cadastra um cliente (que já foi criado) ao banco."""
     if len(id_clientes) == 0:
         print('Nenhum cliente foi registrado.')
         return
@@ -142,6 +148,7 @@ def adicionar_banco():
 
 
 def sacar_banco():
+    """Fluxo interativo para sacar um dinheiro de um cliente do banco."""
     if len(Banco.contas) == 0:
         return print('Nenhum cliente foi registrado no banco.')
     else:
@@ -159,6 +166,7 @@ def sacar_banco():
 
 
 def depositar_banco():
+    """Fluxo interativo que deposita um valor ao cliente cadastrado no banco."""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
@@ -179,6 +187,7 @@ def depositar_banco():
 
 
 def transferencia_banco():
+    """Fluxo interativo que transfere um valor de um cliente para outro cliente."""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
@@ -205,6 +214,7 @@ def transferencia_banco():
 
 
 def consultar_banco():
+    """Fluxo interativo que consulta um cliente específico do banco."""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
@@ -224,6 +234,7 @@ def consultar_banco():
 
 
 def excluir_banco():
+    """Fluxo interativo que exclui um cliente específico do banco."""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
@@ -243,6 +254,8 @@ def excluir_banco():
 
 
 def filtrar_banco():
+    """Interação com o usuário para filtrar os clientes cadastrados no banco.
+    Vai mostrar todos os clientes que tem acima do valor específicado"""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
@@ -250,18 +263,15 @@ def filtrar_banco():
         while True:
             try:
                 print(Banco.contas)
-                chave = int(input('Digite o ID do cliente para que deseja filtrar: '))
-                if chave not in Banco.contas.keys():
-                    print('Nenhum cliente com esse ID foi encontrado.')
-                    return
-                else:
-                    print(Banco.filtrar_clientes(chave))
-                    return
+                filtro = int(input('Digite o valor que deseja filtrar: '))
+                print(Banco.filtrar_clientes(filtro))
+                return
             except (ValueError, TypeError) as err:
                 print(f'Ocorreu um erro: {err}')
 
 
 def atualizar_banco():
+    """Fluxo interativo para atualizar atributos de um cliente específico, sendo esses o nome e a idade."""
     if len(Banco.contas) == 0:
         print('Nenhum cliente foi registrado no banco.')
         return
