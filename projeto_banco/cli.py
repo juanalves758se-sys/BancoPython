@@ -49,7 +49,7 @@ def cliente():
             id_clientes[novo_cliente.identificador] = novo_cliente
             print(f'Cliente criado com sucesso ({novo_cliente.nome}) ID - {novo_cliente.identificador}')
         except (ValueError, TypeError) as err:
-            print(err)
+            print(f'Ocorreu um erro: {err}')
 
 
 def listar_clientes():
@@ -118,7 +118,7 @@ def banco():
                 else:
                     opcoes[escolha]()
         except (ValueError, TypeError) as err:
-            print(err)
+            print(f'Ocorreu um erro: {err}')
 
 
 def adicionar_banco():
@@ -138,7 +138,7 @@ def adicionar_banco():
                     print(Banco.adicionar_cliente(id_clientes[chave]))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def sacar_banco():
@@ -155,7 +155,7 @@ def sacar_banco():
                 else:
                     return print(Banco.saque(Banco.contas[chave], valor))
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def depositar_banco():
@@ -175,7 +175,7 @@ def depositar_banco():
                     print(Banco.deposito(Banco.contas[chave], valor))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def transferencia_banco():
@@ -201,7 +201,7 @@ def transferencia_banco():
                 else:
                     print(Banco.transferencia(Banco.contas[chave1], Banco.contas[chave2], valor))
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def consultar_banco():
@@ -220,7 +220,7 @@ def consultar_banco():
                     print(Banco.consultar(chave))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def excluir_banco():
@@ -239,7 +239,7 @@ def excluir_banco():
                     print(Banco.excluir_cliente(chave))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def filtrar_banco():
@@ -258,7 +258,7 @@ def filtrar_banco():
                     print(Banco.filtrar_clientes(chave))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
 
 
 def atualizar_banco():
@@ -279,4 +279,4 @@ def atualizar_banco():
                     print(Banco.atualizar_clientes(chave, nome, idade))
                     return
             except (ValueError, TypeError) as err:
-                print(err)
+                print(f'Ocorreu um erro: {err}')
