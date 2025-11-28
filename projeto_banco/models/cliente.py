@@ -34,6 +34,8 @@ class Cliente:
 
     @nome.setter
     def nome(self, nome: str) -> None:
+        if len(nome) < 5:
+            raise ValueError('Nome muito pequeno.')
         if len(nome) > 30:
             raise ValueError('Nome muito grande.')
         if not isinstance(nome, str):
