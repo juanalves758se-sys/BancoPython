@@ -34,6 +34,8 @@ class Cliente:
 
     @nome.setter
     def nome(self, nome: str) -> None:
+        if nome in '0, 1, 2, 3, 4, 5, 6, 7, 8, 9':
+            raise ValueError('O nome precisa ter somente letras.')
         if len(nome) < 5:
             raise ValueError('Nome muito pequeno.')
         if len(nome) > 30:
