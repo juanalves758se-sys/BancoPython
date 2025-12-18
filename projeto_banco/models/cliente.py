@@ -34,7 +34,7 @@ class Cliente:
 
     @nome.setter
     def nome(self, nome: str) -> None:
-        if not nome.isalpha():
+        if not nome.replace(' ', '').isalpha():
             raise ValueError('Nome precisa ter somente letras')
         if len(nome) < 5:
             raise ValueError('Nome muito pequeno.')

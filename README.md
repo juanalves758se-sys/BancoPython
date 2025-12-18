@@ -25,3 +25,7 @@ python main.py
 ```
 
 OBS: Você precisa estar utilizando o Python pelo menos na versão 3.x
+
+### Demonstração
+
+![Demonstração do app](assets/demo.gif)
